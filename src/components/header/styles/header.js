@@ -5,8 +5,18 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: url(${({ src }) =>
-      src ? `.../images/misc/${src}.jpg` : `../images/misc/home-bg.jpg`})
+      src ? `../images/misc/${src}.jpg` : `../images/misc/home-bg.jpg`})
     top left / cover no-repeat;
+
+  @media (max-width: 1100px) {
+    ${({ donShowOnSmallViewPort }) =>
+      donShowOnSmallViewPort && "background:none"}
+  }
+`;
+
+export const Group = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const Container = styled.div`
@@ -53,4 +63,45 @@ export const ButtonLink = styled(ReactRouterLink)`
   &:hover {
     background: #f40612;
   }
+`;
+
+export const Feature = styled(Container)`
+  padding: 150px 0 500px 0;
+  flex-direction: column;
+  align-items: normal;
+  width: 50%;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
+`;
+
+export const Text = styled.p`
+  color: white;
+  font-size: 22px;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+`;
+
+export const TextLink = styled.p`
+  color: white;
+  text-decoration: none;
+  margin-right: 30px;
+  font-weight: ${({ active }) => (active === true ? "700" : "nomral")};
+  cursor: pointer;
+  &:hover {
+    font-weight: bold;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+`;
+
+export const FeatureCallOut = styled.h2`
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
 `;
