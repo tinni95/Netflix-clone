@@ -7,7 +7,7 @@ import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { useAuthListener } from "./hoooks";
 
 function App() {
-  const user = useAuthListener();
+  const { user } = useAuthListener();
 
   return (
     <Router>
