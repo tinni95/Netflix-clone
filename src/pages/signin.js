@@ -6,9 +6,9 @@ import { FirebaseContext } from "../context/firebase";
 
 import * as ROUTES from "../constants/routes";
 import { useHistory } from "react-router-dom";
+import { useAuthListener } from "../hoooks";
 
 export default function Signin() {
-  const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -16,12 +16,11 @@ export default function Signin() {
 
   const onClick = (event) => {
     event.preventDefault();
-
     firebase
       .auth()
       .signInWithEmailAndPassword(emailAddress, password)
       .then(() => {
-        history.push(ROUTES.BROWSE);
+        window.location.reload();
       })
       .catch((error) => {
         setEmailAddress("");

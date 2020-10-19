@@ -4,11 +4,7 @@ import FooterContainer from "../containers/footer";
 import HeaderContainer from "../containers/header";
 import { FirebaseContext } from "../context/firebase";
 
-import * as ROUTES from "../constants/routes";
-import { useHistory } from "react-router-dom";
-
 export default function Signup() {
-  const history = useHistory();
   const { firebase } = useContext(FirebaseContext);
   const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -28,8 +24,7 @@ export default function Signup() {
             photoURL: Math.floor(Math.random() * 5) + 1,
           })
           .then((user) => {
-            console.log("user", user);
-            history.push(ROUTES.BROWSE);
+            window.location.reload();
           });
       })
       .catch((error) => {
